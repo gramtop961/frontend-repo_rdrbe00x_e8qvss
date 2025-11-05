@@ -1,28 +1,38 @@
-import { useState } from 'react'
+import React from 'react';
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import Projects from './components/Projects';
+import Contact from './components/Contact';
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">
-          Vibe Coding Platform
-        </h1>
-        <p className="text-gray-600 mb-6">
-          Your AI-powered development environment
-        </p>
-        <div className="text-center">
-          <button
-            onClick={() => setCount(count + 1)}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-          >
-            Count is {count}
-          </button>
-        </div>
-      </div>
+    <div className="font-inter text-slate-800">
+      <Navbar />
+      <main>
+        <Hero />
+        <section id="about" className="py-20 bg-white">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-slate-900">About me</h2>
+            <p className="mt-4 text-slate-700 leading-relaxed">
+              I’m a full‑stack developer focused on creating interactive, accessible, and fast web apps. I enjoy
+              blending thoughtful design with solid engineering — from 3D hero moments and micro‑interactions to
+              scalable APIs and data layers.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-2">
+              {['React', 'FastAPI', 'TypeScript', 'Tailwind', 'MongoDB'].map((skill) => (
+                <span key={skill} className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700">
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
+        </section>
+        <Projects />
+        <Contact />
+      </main>
+      <footer className="border-t border-slate-200 bg-white py-8 text-center text-sm text-slate-500">
+        © {new Date().getFullYear()} MyPortfolio — Built with love and a lot of coffee.
+      </footer>
     </div>
-  )
+  );
 }
-
-export default App
